@@ -302,6 +302,12 @@ h2::after {
     transition: transform .35s, box-shadow .35s;
     opacity: 0;
     transform: translateY(18px);
+    
+    /* التعديل هنا لتمحور المحتوى */
+    display: flex; /* تحويلها لـ flex container */
+    flex-direction: column; /* ترتيب العناصر عموديا */
+    align-items: center; /* توسيط العناصر أفقيا */
+    text-align: center; /* توسيط النص داخل البطاقة */
 }
 
 .service.inview {
@@ -319,6 +325,13 @@ h2::after {
     color: var(--light);
     margin-bottom: 10px;
 }
+
+/* يمكنك أيضاً إضافة margin-bottom لـ h3 إذا أردت مسافة أكبر بين العنوان والوصف */
+.service h3 {
+    margin-bottom: 8px; /* مثال: لزيادة المسافة بين العنوان والوصف */
+}
+
+/* النص الوصفي داخل البطاقة سيتم توسيطه تلقائياً بسبب text-align: center على .service */
 
 
 .achievements-section {
