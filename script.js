@@ -45,6 +45,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         behavior: 'smooth',
         block: 'start'
       });
+      menu.classList.remove('active');
+      menuBtn.classList.remove('open');
     }
   });
 });
