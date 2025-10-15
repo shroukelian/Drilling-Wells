@@ -45,6 +45,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         behavior: 'smooth',
         block: 'start'
       });
+      // إغلاق المنيو بعد الضغط على الرابط
       menu.classList.remove('active');
       menuBtn.classList.remove('open');
     }

@@ -50,6 +50,8 @@ header {
     display: flex;
     align-items: center;
     gap: 12px;
+    /* إضافة flex-grow هنا لتوسيع المساحة المتاحة للوجو والكلام */
+    flex-grow: 1; 
 }
 
 .logo img {
@@ -70,12 +72,6 @@ header {
     margin-top: 2px;
 }
 
-nav ul.menu {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
-
 /* تعديلات زر المنيو */
 .menu-btn {
     display: none; /* إخفاء الزر افتراضيًا، هيظهر في الـ media query */
@@ -85,6 +81,10 @@ nav ul.menu {
     font-size: 20px; /* حجم الخط الأساسي للزر (مش الأيقونة) */
     cursor: pointer;
     padding: 0; /* مهم لإزالة أي padding ممكن يأثر على أيقونة الـ i */
+    margin-left: auto; /* هذا سيجعل الزر يلتصق باليمين قدر الإمكان */
+    order: 2; /* لتحديد ترتيب الظهور، اجعله يظهر بعد اللوجو والكلام */
+    /* يمكنك إضافة margin-right إذا أردت مسافة معينة عن حافة الشاشة */
+     margin-right: 10px; /* مثال لمسافة بسيطة من اليمين */
 }
 
 /* الأيقونة داخل الزر (3 شرطات افتراضيًا) */
@@ -98,6 +98,11 @@ nav ul.menu {
     content: "\f00d"; /* أيقونة X (times) */
 }
 
+nav ul.menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
 
 nav ul.menu li a {
     color: #fff;
@@ -576,7 +581,18 @@ footer {
     }
 
     .header-inner {
+        /* نحتاج لجعل الـ header-inner يستخدم flexbox لتوزيع العناصر */
+        display: flex;
         align-items: center;
+        /* هذا مهم لجعل العناصر تتباعد إلى أقصى حد */
+        justify-content: space-between; 
+        padding: 14px 0;
+    }
+
+    /* إلغاء أي gap على الـ .logo لتوفير مساحة */
+    .logo {
+        gap: 8px; /* تقليل المسافة بين اللوجو والنص */
+        flex-grow: 1; /* السماح للوجو والنص بأخذ المساحة المتاحة */
     }
 
     nav ul.menu {
@@ -584,7 +600,7 @@ footer {
         flex-direction: column;
         position: fixed; 
         top: 0;
-        right: -250px; 
+        right: -250px; /* لتكون مخفية في البداية */
         width: 250px; 
         height: 100vh; 
         background: linear-gradient(90deg, var(--blue), var(--light));
@@ -593,6 +609,7 @@ footer {
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2); /* نضيف ظل */
         z-index: 999; 
         list-style: none;
+        transition: right 0.3s ease-in-out; /* إضافة transition هنا */
     }
 
     nav ul.menu.active {
@@ -612,6 +629,10 @@ footer {
     .menu-btn {
         display: block; 
         z-index: 1000; 
+        margin-left: auto; /* يدفع الزر لأقصى اليمين */
+        order: 2; /* تأكد من ترتيبه بعد اللوجو */
+        /* يمكنك تعديل هذا إذا أردت مسافة معينة عن حافة الشاشة */
+        margin-right: 10px; /* مسافة بسيطة من اليمين */
     }
 
     .footer-inner {
@@ -624,21 +645,29 @@ footer {
 /* responsive general overrides for smaller screens */
 @media (max-width: 768px) {
   .header-inner {
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* نمنع الالتفاف لنتحكم بالمسافات بشكل أفضل */
     justify-content: space-between;
+  }
+
+  /* هنا نحتاج لتأكيد أن اللوجو والنص يأخذان المساحة المتبقية */
+  .logo {
+      flex-grow: 1;
+      /* ربما تقليل الـ gap هنا أيضًا */
+      gap: 8px; 
   }
 
   .menu-btn {
     display: block;
     cursor: pointer;
+    margin-left: auto; /* هذا مهم جدًا لدفعه أقصى اليمين */
+    order: 2;
+    margin-right: 10px; /* لترك مسافة عن حافة الشاشة */
   }
 
   .menu-btn i {
     font-size: 24px;
     transition: transform 0.3s;
   }
-
- 
 
   .hero-inner {
     grid-template-columns: 1fr;
@@ -681,7 +710,6 @@ footer {
   border-radius: 10px;
 }
 
-/* Responsive تعديل */
 @media (max-width: 768px) {
   .contact-content {
     flex-direction: column;
