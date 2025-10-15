@@ -303,11 +303,10 @@ h2::after {
     opacity: 0;
     transform: translateY(18px);
     
-    /* التعديل هنا لتمحور المحتوى */
-    display: flex; /* تحويلها لـ flex container */
-    flex-direction: column; /* ترتيب العناصر عموديا */
-    align-items: center; /* توسيط العناصر أفقيا */
-    text-align: center; /* توسيط النص داخل البطاقة */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
 }
 
 .service.inview {
@@ -326,12 +325,10 @@ h2::after {
     margin-bottom: 10px;
 }
 
-/* يمكنك أيضاً إضافة margin-bottom لـ h3 إذا أردت مسافة أكبر بين العنوان والوصف */
 .service h3 {
-    margin-bottom: 8px; /* مثال: لزيادة المسافة بين العنوان والوصف */
+    margin-bottom: 8px; 
 }
 
-/* النص الوصفي داخل البطاقة سيتم توسيطه تلقائياً بسبب text-align: center على .service */
 
 
 .achievements-section {
@@ -578,6 +575,100 @@ footer {
 
 .footer-inner .muted {
     opacity: .9;
+}
+/* Floating Action Buttons */
+.floating-btns {
+    position: fixed;
+    bottom: 20px; /* مسافة من الأسفل */
+    left: 20px;  /* مسافة من اليسار */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* المسافة بين الأزرار */
+}
+
+.floating-btns a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* لجعلها دائرية */
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-btns a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.floating-whatsapp {
+    background-color: #25D366; /* لون الواتساب الأخضر */
+}
+
+.floating-call {
+    background-color: var(--blue); /* لون أزرق لزر الاتصال (يمكنك تغيير var(--blue) إلى #007bff مثلاً) */
+}
+
+/* Styles for Social Media Links in Contact Section */
+.social-links {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px; /* المسافة بين الأيقونات */
+    justify-content: flex-start; /* لتبدأ من اليسار */
+    align-items: center;
+}
+
+.social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; /* حجم الأيقونة */
+    height: 40px; /* حجم الأيقونة */
+    border-radius: 50%; /* لجعلها دائرية */
+    background-color: var(--blue); /* لون الخلفية الافتراضي */
+    color: #fff; /* لون الأيقونة */
+    font-size: 20px; /* حجم الأيقونة */
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.social-links a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.social-links a:nth-child(1) { /* Facebook */
+    background-color: #3b5998;
+}
+
+.social-links a:nth-child(2) { /* Instagram */
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+}
+
+/* تنسيق للتحكم في عرض الأيقونات في الشاشات الصغيرة لو احتجنا */
+@media (max-width: 768px) {
+  .social-links {
+    justify-content: center; /* لتوسيط الأيقونات في الشاشات الصغيرة */
+  }
+}
+/* Adjust for very small screens if needed */
+@media (max-width: 400px) {
+    .floating-btns {
+        bottom: 15px;
+        left: 15px;
+        gap: 8px;
+    }
+    .floating-btns a {
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+    }
 }
 
 /* responsive */
